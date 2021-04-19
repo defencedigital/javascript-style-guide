@@ -19,11 +19,11 @@ Be aware of this when reading the guide - some of the JS shown here may not work
 
 _Why_: in JavaScript there is no difference between single and double quotes. Rather than have a mix throughout a code base, pick one and stick to it.
 
-#### Keep line length at around 80 characters.
+#### Keep line length at around 140 characters.
 
 _Why_: this encourages developers to write lines that do less, and extract variables and functions where a line is longer than required.
 
-We don’t have an 80 char hard limit because sometimes it’s more readable to let a line be 85 characters rather than break it up, but in general you should aim for 80 characters or less.
+We don’t have an 140 char hard limit because sometimes it’s more readable to let a line be 85 characters rather than break it up, but in general you should aim for 140 characters or less.
 
 #### Use `String.prototype.includes` to check for substrings
 
@@ -148,9 +148,9 @@ function doSomething() {
 }
 ```
 
-#### When a function has arguments that make the line longer than ~80 characters, split it into one parameter per line.
+#### When a function has arguments that make the line longer than ~140 characters, split it into one parameter per line.
 
-_Why_: keeps lines below 80 characters, after which readability declines.
+_Why_: keeps lines below 140 characters, after which readability declines.
 
 ```js
 // good
@@ -183,7 +183,7 @@ function SomeController(
 
 #### When an object literal has more than one property, split it into one property per line, leaving a trailing comma.
 
-_Why_: keeps lines below 80 characters, after which readability declines. Trailing commas make it easier to reorder existing lines without editing them, and makes new lines clearer in the diff.
+_Why_: keeps lines below 140 characters, after which readability declines. Trailing commas make it easier to reorder existing lines without editing them, and makes new lines clearer in the diff.
 
 ```js
 // good
@@ -399,36 +399,18 @@ if (foo)
 
 ## `=>` functions
 
-#### Prefer “fat arrow” functions when the function is small enough to fit on one line, or when the function’s job is to return the result of an expression.
+#### Prefer “fat arrow” functions.
 
 _Why_: they are more concise and readable, and implicitly return when the body is an expression.
 
 ```js
 // bad
-[1, 2, 3].map(function(x) { return x * 2 });
+[1, 2, 3].map(function(x) { 
+  return x * 2 
+});
 
 // good
 [1, 2, 3].map((x) => x * 2);
-```
-
-#### Use function expressions when the function body is a block.
-
-_Why_: an arrow function that spans multiple lines requires a block and an explicit return statement. Therefore, using an arrow function offers a minimally shorter expression at the expense of losing the function name in a stack trace.
-
-```js
-// bad
-[1, 2, 3].map((x) => {
-  // do lots of things
-  // do more things
-  return x * 2;
-});
-
-// good
-[1, 2, 3].map(function(x) {
-  // do lots of things
-  // do more things
-  return x * 2;
-});
 ```
 
 #### Always wrap arrow function arguments in brackets.
